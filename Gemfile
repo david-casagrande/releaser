@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'rails', '~> 4.0.1'
 gem 'uglifier'
+gem 'foundation-rails'
 
 group :development, :test do
   gem 'better_errors'

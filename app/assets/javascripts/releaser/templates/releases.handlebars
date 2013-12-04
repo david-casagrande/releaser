@@ -1,0 +1,14 @@
+<div id="releases-index" class="large-3 columns">
+	<ul class="side-nav">
+		{{#each}}
+			{{#unless isNew}}
+				<li>
+					<p>{{#link-to 'releases.show' this}}{{name}}{{/link-to}} by {{artist.name}}</p>
+				</li>
+			{{/unless}}
+		{{/each}}
+	</ul>
+	{{#link-to 'releases.new' classNames="button tiny"}}Add Release{{/link-to}}
+</div>
+
+<div class="large-9 columns">{{outlet}}</div>
