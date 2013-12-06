@@ -20,4 +20,9 @@ describe Release do
     expect(Fabricate(:release).artist).to be_an Artist
   end
 
+  it 'has many expenses' do
+    expect(Fabricate(:release)).to respond_to(:expenses)
+    expect(Fabricate(:release).expenses.build).to be_an_instance_of Expense
+  end	
+
 end

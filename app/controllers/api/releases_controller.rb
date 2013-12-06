@@ -1,7 +1,5 @@
 class Api::ReleasesController < ApplicationController
 	
-	respond_to :json
-
 	def index
 		respond_with releases
 	end

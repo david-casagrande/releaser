@@ -1,3 +1,25 @@
 <h2>{{name}}</h2>
 <h3>{{artist.name}}</h3>
 <h4>{{catalogueNumber}}</h4>
+
+<div id="release-expenses" class="panel">
+	<h4>Expenses</h4>
+	<table>
+		<thead>
+			<th>Description</th>
+			<th width="200">Cost</th>
+		</thead>
+		<tbody>
+			{{#each expenses}}
+				<tr>
+					<td>{{description}}</td>
+					<td>{{cost}}</td>
+				</tr>
+			{{else}}
+				<tr>
+					<td colspan="2">No expenses have been entered for {{controller.catalogueNumber}} yet</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>

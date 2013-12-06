@@ -12,5 +12,6 @@ gem 'foundation-rails'
 group :development, :test do
   gem 'better_errors'
   gem 'fabrication'
+  gem 'json_spec'
   gem 'rspec-rails'
 end
