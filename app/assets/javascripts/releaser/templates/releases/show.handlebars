@@ -1,6 +1,8 @@
-<h2>{{name}}</h2>
-<h3>{{artist.name}}</h3>
-<h4>{{catalogueNumber}}</h4>
+{{input type='text' value=name}}
+{{input type='text' value=catalogueNumber}}
+
+<a href="#" class="button small" {{action 'saveRelease' this}}>Update Release</a>
+<a href="#" class="button small alert" {{action 'deleteRelease' this}}>Delete</a>
 
 <div id="release-expenses" class="panel">
 	<h4>Expenses</h4>

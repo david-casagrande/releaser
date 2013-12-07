@@ -10,4 +10,9 @@ describe Expense do
     expect(Fabricate(:expense).release).to be_a Release
   end
 
+  it 'is invalid without an associated release' do
+		expense = Fabricate.build(:expense, release: nil)
+		expect(expense).to_not be_valid
+  end
+
 end

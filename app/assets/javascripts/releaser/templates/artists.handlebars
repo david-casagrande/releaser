@@ -5,17 +5,17 @@
 			{{#unless isNew}}
 				<div class="panel">
 					<p>
-						{{#link-to 'releases.show' this}}{{name}}{{/link-to}} by {{artist.name}} <br />
+						{{#link-to 'artists.show' this}}{{name}}{{/link-to}}
 					</p>
 				</div>
 			{{/unless}}
 		{{/each}}
 
-		{{#link-to 'releases.new' classNames="button small"}}Add Release{{/link-to}}
-
+		{{#link-to 'artists.new' classNames="button small"}}Add Artist{{/link-to}}
+		
 	</div>
 </div>
 
 <div class="content-body">
-	<div class="margin">{{outlet}}</div>	
+	<div class="margin">{{outlet}}</div>
 </div>

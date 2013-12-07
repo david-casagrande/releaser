@@ -9,6 +9,12 @@ Releaser.ReleasesNewRoute = Ember.Route.extend({
 			model: model,
 			availableArtists: this.get('store').find('artist')
 		});
+	},
+
+	deactivate: function(){
+		if(this.get('controller.model.isNew')){
+			this.get('controller.model').deleteRecord();
+		}
 	}
 
 });

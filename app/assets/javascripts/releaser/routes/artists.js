@@ -1,19 +1,19 @@
-Releaser.ReleasesRoute = Ember.Route.extend({
-	
+Releaser.ArtistsRoute = Ember.Route.extend({
+
 	actions: {
 
-		saveRelease: function(record){
+		saveArtist: function(record){
 			this.saveRecord(record);
 		},
-		
-		deleteRelease: function(record){
+
+		deleteArtist: function(record){
 			this.deleteRecord(record);
-		}
+		}		
 
 	},
 
 	model: function(){
-		return this.get('store').find('release');
+		return this.get('store').find('artist');
 	},
 
 	saveRecord: function(record){
@@ -21,7 +21,7 @@ Releaser.ReleasesRoute = Ember.Route.extend({
 
 		record.save()
 			.then(function(){
-				self.transitionTo('releases.show', record);
+				self.transitionTo('artists.show', record);
 			}, function(errors){
 				alert(errors.message);
 			});
@@ -33,10 +33,17 @@ Releaser.ReleasesRoute = Ember.Route.extend({
 		record.deleteRecord();
 		record.save()
 			.then(function(){
-				self.transitionTo('releases.index');
+				self.deleteArtistReleases(record);
+				self.transitionTo('artists.index');
 			}, function(errors){
 				alert(errors.message);
 			});
+	},
+
+	deleteArtistReleases: function(artist){
+		artist.get('releases').forEach(function(release){
+			release.deleteRecord();
+		});
 	}
 
 });

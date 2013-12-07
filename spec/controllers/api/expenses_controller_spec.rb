@@ -31,4 +31,36 @@ describe Api::ExpensesController do
     
   end
 
+  describe 'POST :create' do
+
+    it 'creates a new expense' do
+      expect{ 
+        post :create, expense: Fabricate.attributes_for(:expense), format: :json
+      }.to change(Expense, :count).by(1)
+    end
+
+  end
+
+  describe 'PUT :update' do
+
+    it 'updates an expense' do
+      expense = Fabricate(:expense)
+      put :update, id: expense, expense: Fabricate.attributes_for(:expense, cost: '55.55'), format: :json
+      expense.reload
+      expect(expense.cost).to eq(55.55)
+    end
+
+  end  
+
+  describe 'DELETE :destroy' do
+    
+    it 'deletes a expense' do
+      expense = Fabricate(:expense)
+      expect do
+        delete :destroy, id: expense.id, format: :json
+      end.to change(Expense, :count).by(-1)
+    end
+  
+  end
+
 end

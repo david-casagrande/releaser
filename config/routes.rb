@@ -1,9 +1,7 @@
 Releaser::Application.routes.draw do
 
   namespace :api do
-    resources :artists, only: [:index, :show]
-    resources :expenses, only: [:index, :show]
-    resources :releases, only: [:index, :show]
+    resources :artists, :expenses, :releases, except: [:new, :edit]
   end
 
   root to: 'dashboard#index'
