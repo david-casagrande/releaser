@@ -1,6 +1,6 @@
 Releaser.ArtistsShowRoute = Ember.Route.extend({
 
- 	contextDidChange: function() {
+	contextDidChange: function(){
     this.rollbackModel(this.currentModel);
     this._super();
   },
@@ -11,7 +11,7 @@ Releaser.ArtistsShowRoute = Ember.Route.extend({
 
 	rollbackModel: function(model){
 		if(model && model.get('isDirty')){
-    	model.rollback();
+			model.rollback();
 		}
 	}
 

@@ -9,8 +9,12 @@ gem 'rails', '~> 4.0.1'
 gem 'uglifier'
 gem 'foundation-rails'
 
-group :development, :test do
+group :development do
   gem 'better_errors'
+  gem 'jshint_on_rails'
+end
+
+group :development, :test do
   gem 'fabrication'
   gem 'json_spec'
   gem 'rspec-rails'
