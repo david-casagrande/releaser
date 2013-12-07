@@ -1,21 +1,19 @@
-<div class="content-left-nav">
-	<div class="margin">
+{{#left-nav title='Artists'}}
 
-		{{#each}}
-			{{#unless isNew}}
-				<div class="panel">
-					<p>
-						{{#link-to 'artists.show' this}}{{name}}{{/link-to}}
-					</p>
-				</div>
-			{{/unless}}
-		{{/each}}
+	{{#each}}
+		{{#unless isNew}}
+			<div class="panel">
+				<p>
+					{{#link-to 'artists.show' this}}{{name}}{{/link-to}}
+				</p>
+			</div>
+		{{/unless}}
+	{{/each}}
 
-		{{#link-to 'artists.new' classNames="button small"}}Add Artist{{/link-to}}
-		
-	</div>
-</div>
+	{{#link-to 'artists.new' classNames="button small"}}Add Artist{{/link-to}}
 
-<div class="content-body">
-	<div class="margin">{{outlet}}</div>
-</div>
+{{/left-nav}}
+
+{{#content-body}}
+	{{outlet}}
+{{/content-body}}

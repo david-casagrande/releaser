@@ -3,9 +3,10 @@
 @import "foundation_and_overrides";
 
 $content-left-nav-width: 300px;
+
 .window-top-margin {
-	margin-top: $topbar-height + 16px;
 	position: relative;
+	padding-top: $topbar-height;
 	margin-left: 1em;
 	margin-right: 1em;
 }
@@ -36,6 +37,9 @@ $content-left-nav-width: 300px;
 	.margin {
 		@extend .window-top-margin;
 		margin-left: $content-left-nav-width + 16px;
+	}
+	.top-padding {
+		padding-top: 2em;
 	}
 }
 
