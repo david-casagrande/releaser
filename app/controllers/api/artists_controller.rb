@@ -5,6 +5,7 @@ class Api::ArtistsController < ApplicationController
 	end
 
 	def show
+		logger.debug artist.versions.to_yaml
 		respond_with artist
 	end
 

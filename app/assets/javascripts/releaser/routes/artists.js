@@ -1,13 +1,15 @@
-Releaser.ArtistsRoute = Ember.Route.extend({
+//= require ../mixins/route_crud
+
+Releaser.ArtistsRoute = Ember.Route.extend(Releaser.RouteCrud, {
 
 	actions: {
 
 		saveArtist: function(record){
-			this.saveRecord(record);
+			this.saveRecord(record, 'artists.show');
 		},
 
 		deleteArtist: function(record){
-			this.deleteRecord(record);
+			this.deleteRecord(record, 'artists.index');
 		}		
 
 	},
@@ -16,28 +18,9 @@ Releaser.ArtistsRoute = Ember.Route.extend({
 		return this.get('store').find('artist');
 	},
 
-	saveRecord: function(record){
-		var self = this;
-
-		record.save()
-			.then(function(){
-				self.transitionTo('artists.show', record);
-			}, function(errors){
-				alert(errors.message);
-			});
-	},
-
-	deleteRecord: function(record){
-		var self = this;
-
-		record.deleteRecord();
-		record.save()
-			.then(function(){
-				self.deleteArtistReleases(record);
-				self.transitionTo('artists.index');
-			}, function(errors){
-				alert(errors.message);
-			});
+	deleteRecordSuccess: function(record, route){
+		this.deleteArtistReleases(record);
+		this._super(record, route);
 	},
 
 	deleteArtistReleases: function(artist){

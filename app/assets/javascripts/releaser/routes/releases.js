@@ -1,42 +1,21 @@
-Releaser.ReleasesRoute = Ember.Route.extend({
+//= require ../mixins/route_crud
+
+Releaser.ReleasesRoute = Ember.Route.extend(Releaser.RouteCrud, {
 	
 	actions: {
 
 		saveRelease: function(record){
-			this.saveRecord(record);
+			this.saveRecord(record, 'releases.show');
 		},
 		
 		deleteRelease: function(record){
-			this.deleteRecord(record);
+			this.deleteRecord(record, 'releases.index');
 		}
 
 	},
 
 	model: function(){
 		return this.get('store').find('release');
-	},
-
-	saveRecord: function(record){
-		var self = this;
-
-		record.save()
-			.then(function(){
-				self.transitionTo('releases.show', record);
-			}, function(errors){
-				alert(errors.message);
-			});
-	},
-
-	deleteRecord: function(record){
-		var self = this;
-
-		record.deleteRecord();
-		record.save()
-			.then(function(){
-				self.transitionTo('releases.index');
-			}, function(errors){
-				alert(errors.message);
-			});
 	}
 
 });
