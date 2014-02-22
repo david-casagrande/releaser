@@ -1,13 +1,15 @@
 require 'spec_helper'
 
-describe Api::ArtistsController do
+describe API::ArtistsController do
+  let!(:artist) { Fabricate(:artist) }
 
   describe 'GET :index' do
+    
+    let!(:artist2) { Fabricate(:artist) }
 
     it 'populates an array of artists' do
-  		artists = [Fabricate(:artist), Fabricate(:artist)]
-    	get :index, format: :json
-    	expected = ActiveModel::ArraySerializer.new(artists, root: 'artists')
+      get :index, format: :json
+      expected = ActiveModel::ArraySerializer.new([artist, artist2], root: 'artists')
       expect(response.body).to eq(expected.to_json)
     end
 
@@ -16,7 +18,6 @@ describe Api::ArtistsController do
   describe 'GET :show' do
     
     it 'returns the requested artist' do
-  		artist = Fabricate(:artist)
     	get :show, id: artist, format: :json
     	expected = ArtistSerializer.new(artist)
       expect(response.body).to eq(expected.to_json)
@@ -37,7 +38,6 @@ describe Api::ArtistsController do
   describe 'PUT :update' do
 
     it 'updates an artist' do
-      artist = Fabricate(:artist)
       put :update, id: artist, artist: Fabricate.attributes_for(:artist, name: 'Dan Casey'), format: :json
       artist.reload
       expect(artist.name).to eq('Dan Casey')
@@ -48,14 +48,12 @@ describe Api::ArtistsController do
   describe 'DELETE :destroy' do
 
     it 'deletes an artist' do
-      artist = Fabricate(:artist)
       expect do
         delete :destroy, id: artist.id, format: :json
       end.to change(Artist, :count).by(-1)
     end
 
     it 'deletes associated releases' do
-      artist = Fabricate(:artist)
       release = Fabricate(:release, { artist: artist })
       expect do
         delete :destroy, id: artist.id, format: :json

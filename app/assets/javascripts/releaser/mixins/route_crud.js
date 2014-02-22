@@ -6,7 +6,7 @@ Releaser.RouteCrud = Ember.Mixin.create({
 		record.save()
 		.then(function(){
 			self.saveRecordSuccess(record, route);
-		}, function(errors,record, route){
+		}, function(errors, record, route){
 			self.saveRecordError(errors, record, route);
 		});
 	},

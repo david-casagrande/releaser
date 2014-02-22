@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe ArtistSerializer do
   subject { described_class.new(artist) }
-
   let(:artist) { Fabricate(:artist) }
 
   it 'has valid root' do

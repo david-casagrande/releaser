@@ -1,20 +1,21 @@
 require 'spec_helper'
 
-describe Api::ExpensesController do
+describe API::ExpensesController do
+  let!(:expense) { Fabricate(:expense) }
 
   describe 'GET :index' do
 
+    let!(:expense2) { Fabricate(:expense) }
+
     it 'populates an array of expenses' do
-  		expenses = [Fabricate(:expense), Fabricate(:expense)]
     	get :index, format: :json
-    	expected = ActiveModel::ArraySerializer.new(expenses, root: 'expenses')
+    	expected = ActiveModel::ArraySerializer.new([expense, expense2], root: 'expenses')
       expect(response.body).to eq(expected.to_json)
     end
 
     it 'populates an array of expenses of requested ids' do
-      expenses = [Fabricate(:expense), Fabricate(:expense), Fabricate(:expense)]
-      get :index, ids: [expenses[0].id, expenses[2].id], format: :json
-      expected = ActiveModel::ArraySerializer.new([expenses[0], expenses[2]], root: 'expenses')
+      get :index, ids: [expense.id, expense2.id], format: :json
+      expected = ActiveModel::ArraySerializer.new([expense, expense2], root: 'expenses')
       expect(response.body).to eq(expected.to_json)
     end
 
@@ -23,7 +24,6 @@ describe Api::ExpensesController do
   describe 'GET :show' do
     
     it 'returns the requested expense' do
-  		expense = Fabricate(:expense)
     	get :show, id: expense, format: :json
     	expected = ExpenseSerializer.new(expense)
       expect(response.body).to eq(expected.to_json)
@@ -44,7 +44,6 @@ describe Api::ExpensesController do
   describe 'PUT :update' do
 
     it 'updates an expense' do
-      expense = Fabricate(:expense)
       put :update, id: expense, expense: Fabricate.attributes_for(:expense, cost: '55.55'), format: :json
       expense.reload
       expect(expense.cost).to eq(55.55)
@@ -55,7 +54,6 @@ describe Api::ExpensesController do
   describe 'DELETE :destroy' do
     
     it 'deletes a expense' do
-      expense = Fabricate(:expense)
       expect do
         delete :destroy, id: expense.id, format: :json
       end.to change(Expense, :count).by(-1)

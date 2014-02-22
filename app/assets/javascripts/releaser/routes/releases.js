@@ -8,14 +8,23 @@ Releaser.ReleasesRoute = Ember.Route.extend(Releaser.RouteCrud, {
 			this.saveRecord(record, 'releases.show');
 		},
 		
-		deleteRelease: function(record){
-			this.deleteRecord(record, 'releases.index');
-		}
+		deleteRelease: function(release){
+			this.deleteRecord(release, 'releases.index');
+		},
 
+		deleteExpense: function(record){
+			this.deleteRecord(record, 'releases.show');
+		}	
+	
 	},
 
 	model: function(){
 		return this.get('store').find('release');
+	},
+
+	setupController: function(controller, model){
+		this._super();
+		
 	}
 
 });
