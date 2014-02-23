@@ -10,6 +10,7 @@ module Releaser
   class Application < Rails::Application
     # Sprockets configuration
     config.assets.precompile += %w(application.js application.css)
+		config.assets.initialize_on_precompile = false
 
     # General Rails configuration
     config.encoding = 'utf-8'
