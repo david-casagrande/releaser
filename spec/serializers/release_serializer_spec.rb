@@ -9,7 +9,7 @@ describe ReleaseSerializer do
     expect(subject.to_json).to have_json_path('release')
   end
 
-  [:id, :artist_id, :catalogue_number, :expense_ids, :name, :created_at, :updated_at].each do |attr|
+  [:id, :artist_id, :catalogue_number, :expense_ids, :name, :created_at, :updated_at, :author_id].each do |attr|
     it "includes #{attr}" do
       expect(subject.to_json).to have_json_path("release/#{attr.to_s}")
     end
