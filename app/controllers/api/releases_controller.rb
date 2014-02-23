@@ -26,7 +26,7 @@ module API
 
 		private
 		def releases
-			@releases ||= Release.all
+			@releases ||= Release.all.includes(:expenses)
 		end
 
 		def release

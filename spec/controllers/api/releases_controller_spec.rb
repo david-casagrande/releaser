@@ -1,7 +1,16 @@
 require 'spec_helper'
 
 describe API::ReleasesController do
+  let!(:user) { Fabricate(:user) }  
   let!(:release) { Fabricate(:release) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   describe 'GET :index' do
     let!(:release2) { Fabricate(:release) }

@@ -1,6 +1,15 @@
 require 'spec_helper'
 
 describe DashboardController do
+  let!(:user) { Fabricate(:user) }
+
+  before do
+		sign_in user
+  end
+
+  after do
+		sign_out user
+  end
 
   describe 'GET :index' do
 

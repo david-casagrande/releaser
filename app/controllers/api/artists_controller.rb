@@ -26,7 +26,7 @@ module API
 
 		private
 		def artists
-			@artists ||= Artist.all#.includes(:releases)
+			@artists ||= Artist.all.includes(:releases)
 		end
 
 		def artist

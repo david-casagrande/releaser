@@ -2,12 +2,13 @@ source 'https://rubygems.org'
 
 gem 'active_model_serializers'
 gem 'carrierwave'
+gem 'devise'
 gem 'ember-rails'
 gem 'foundation-rails'
 gem 'jquery-rails'
-gem 'paper_trail', '>= 3.0.0.rc2'
+gem 'paper_trail'
 gem 'pg'
-gem 'rails', '~> 4.0.1'
+gem 'rails', '~> 4.0.3'
 gem 'uglifier'
 
 group :development do
@@ -19,6 +20,7 @@ end
 group :development, :test do
 	gem 'capybara'
   gem 'fabrication'
+  gem 'ffaker'
   gem 'json_spec'
   gem 'konacha'
   gem 'poltergeist'

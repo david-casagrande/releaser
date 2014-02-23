@@ -1,7 +1,16 @@
 require 'spec_helper'
 
 describe API::ExpensesController do
+  let!(:user) { Fabricate(:user) }  
   let!(:expense) { Fabricate(:expense) }
+
+  before do
+    sign_in user
+  end
+
+  after do
+    sign_out user
+  end
 
   describe 'GET :index' do
 

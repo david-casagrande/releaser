@@ -1,8 +1,12 @@
-/*= require foundation */
-
+@import "foundation";
 @import "foundation_and_overrides";
+@import "foundation/components/buttons";
 
 $content-left-nav-width: 300px;
+
+input[type="submit"] {
+	@include button;
+}
 
 .window-top-margin {
 	position: relative;

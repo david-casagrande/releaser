@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Releaser</title>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="large-3 medium-3 columns">&nbsp;</div>
+      <div class="large-6 medium-6 columns">
+        <% if notice %><p class="notice alert-box info"><%= notice %></p><% end %>
+        <% if alert %><p class="alert alert-box alert"><%= alert %></p><% end %>
+      </div>
+      <div class="large-3 medium-3 columns">&nbsp;</div>
+    </div>
+
+    <div class="row">
+      <div class="large-3 medium-3 columns">&nbsp;</div>
+      <div class="large-6 medium-6 columns"><%= yield %></div>
+      <div class="large-3 medium-3 columns">&nbsp;</div>
+    </div>
+    <%= javascript_include_tag 'jquery' %>
+  </body>
+</html>
