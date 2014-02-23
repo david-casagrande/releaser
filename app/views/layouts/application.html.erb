@@ -15,7 +15,6 @@
       <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
     <% end %>
     <%= yield %>
-    <%= javascript_include_tag 'jquery' %>
-    <%= javascript_include_tag 'jquery_ujs' %>
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>
