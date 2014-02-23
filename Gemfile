@@ -15,6 +15,7 @@ group :development do
   gem 'better_errors'
   gem 'jshint_on_rails'
   gem 'rubocop'
+  gem 'thin'
 end
 
 group :development, :test do
