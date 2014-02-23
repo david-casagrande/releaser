@@ -22,6 +22,7 @@ group :development, :test do
 	gem 'capybara'
   gem 'fabrication'
   gem 'ffaker'
+  gem 'figaro'
   gem 'json_spec'
   gem 'konacha'
   gem 'poltergeist'
