@@ -42,6 +42,11 @@ describe API::ArtistsController do
       }.to change(Artist, :count).by(1)
     end
 
+    it 'sets author_id to current_user.id' do
+      post :create, artist: Fabricate.attributes_for(:artist), format: :json
+      expect(Artist.last.author_id).to eql(user.id)
+    end
+
   end
 
   describe 'PUT :update' do

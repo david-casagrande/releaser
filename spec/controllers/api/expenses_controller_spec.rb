@@ -48,6 +48,11 @@ describe API::ExpensesController do
       }.to change(Expense, :count).by(1)
     end
 
+    it 'sets author_id to current_user.id' do
+      post :create, expense: Fabricate.attributes_for(:expense), format: :json
+      expect(Expense.last.author_id).to eql(user.id)
+    end
+
   end
 
   describe 'PUT :update' do

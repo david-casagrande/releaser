@@ -10,7 +10,8 @@ module API
 		end
 
 		def create
-	    @release = Release.create(release_params)
+			author = { author_id: current_user.id }
+	    @release = Release.create(release_params.merge(author))
 	    respond_with release, location: api_releases_url(release)
 		end
 

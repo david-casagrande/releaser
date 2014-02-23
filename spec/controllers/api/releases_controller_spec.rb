@@ -41,6 +41,11 @@ describe API::ReleasesController do
       }.to change(Release, :count).by(1)
     end
 
+    it 'sets author_id to current_user.id' do
+      post :create, release: Fabricate.attributes_for(:release), format: :json
+      expect(Release.last.author_id).to eql(user.id)
+    end
+
   end
 
   describe 'PUT :update' do

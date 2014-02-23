@@ -10,7 +10,8 @@ module API
 		end
 
 		def create
-	    @artist = Artist.create(artist_params)
+			author = { author_id: current_user.id }
+	    @artist = Artist.create(artist_params.merge(author))
 	    respond_with artist, location: api_artists_url(artist)
 		end
 
@@ -24,7 +25,7 @@ module API
 	    respond_with artist, location: api_artists_url
 		end
 
-		private
+		protected
 		def artists
 			@artists ||= Artist.all.includes(:releases)
 		end
@@ -38,7 +39,7 @@ module API
 	    	:name,
 	    	:description
 	    )
-	  end	
+	  end
 
 	end
 end

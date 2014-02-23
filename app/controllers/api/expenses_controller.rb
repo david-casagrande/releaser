@@ -11,7 +11,8 @@ module API
 		end
 
 		def create
-			@expense = Expense.create(expense_params)
+			author = { author_id: current_user.id }
+			@expense = Expense.create(expense_params.merge(author))
 			respond_with expense, location: api_expenses_url(expense)
 		end
 

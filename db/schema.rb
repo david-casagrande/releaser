@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222221851) do
+ActiveRecord::Schema.define(version: 20140223173041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140222221851) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "author_id"
   end
 
   create_table "expenses", force: true do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140222221851) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "release_id"
+    t.integer  "author_id"
   end
 
   create_table "releases", force: true do |t|
@@ -38,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140222221851) do
     t.datetime "updated_at"
     t.integer  "artist_id"
     t.string   "cover"
+    t.integer  "author_id"
   end
 
   add_index "releases", ["catalogue_number"], name: "index_releases_on_catalogue_number", using: :btree
